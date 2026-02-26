@@ -3,58 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoEdu | Learn Markets</title>
+    <title>BOLT STOCK ACADEMY | THE ULTIMATE BIBLE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .candle-container { display: flex; align-items: flex-end; gap: 10px; height: 100px; padding: 20px; background: #1a1a1a; border-radius: 8px; }
-        .candle { width: 15px; position: relative; }
-        .wick { position: absolute; width: 2px; background: currentColor; left: 50%; transform: translateX(-50%); }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap');
+        html { scroll-behavior: smooth; }
+        body { background-color: #050505; font-family: 'Inter', sans-serif; color: #d1d5db; }
+        .neon-yellow { color: #fbbf24; text-shadow: 0 0 10px #fbbf24; font-family: 'Orbitron', sans-serif; }
+        .neon-border { border: 1px solid rgba(251, 191, 36, 0.2); transition: 0.3s; }
+        .neon-border:hover { border-color: #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
+        .sidebar-item { border-left: 2px solid transparent; transition: 0.3s; }
+        .sidebar-item:hover { border-left: 2px solid #fbbf24; background: rgba(251, 191, 36, 0.05); color: #fbbf24; }
+        .chart-bg { background-image: radial-gradient(#1a1a1a 1px, transparent 1px); background-size: 20px 20px; }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
+<body>
 
-    <div class="fixed left-0 top-0 h-full w-64 bg-gray-800 p-6 hidden md:block">
-        <h1 class="text-2xl font-bold text-cyan-400 mb-8">CryptoWiki</h1>
-        <nav class="space-y-4">
-            <a href="#" class="block hover:text-cyan-400 transition">01. Intro to Blockchain</a>
-            <a href="#" class="block text-cyan-400 font-bold border-l-2 border-cyan-400 pl-2">02. Candlestick Patterns</a>
-            <a href="#" class="block hover:text-cyan-400 transition">03. RSI & Indicators</a>
-            <a href="#" class="block hover:text-cyan-400 transition">04. NFT Fundamentals</a>
+    <div class="fixed left-0 top-0 h-full w-64 bg-[#080808] border-r border-yellow-900/20 p-6 hidden lg:block overflow-y-auto">
+        <h1 class="neon-yellow text-2xl mb-10 tracking-tighter">BOLT v2.0</h1>
+        <nav class="space-y-1 uppercase text-[11px] font-bold tracking-widest">
+            <a href="#intro" class="sidebar-item block px-4 py-3">01. Market Basics</a>
+            <a href="#patterns" class="sidebar-item block px-4 py-3">02. Chart Patterns</a>
+            <a href="#indicators" class="sidebar-item block px-4 py-3">03. Indicators</a>
+            <a href="#psychology" class="sidebar-item block px-4 py-3">04. Risk & Psychology</a>
         </nav>
     </div>
 
-    <main class="md:ml-64 p-8 max-w-4xl">
-        <header class="mb-12">
-            <span class="text-cyan-400 text-sm font-mono">CHAPTER 02</span>
-            <h2 class="text-4xl font-extrabold mt-2">Reading Candlestick Patterns</h2>
-            <p class="text-gray-400 mt-4 text-lg">Master the language of the market. Candlesticks show you the battle between Bulls (buyers) and Bears (sellers).</p>
+    <main class="lg:ml-64 p-6 md:p-16 max-w-5xl">
+        
+        <header class="mb-24">
+            <h1 class="text-7xl font-black text-white leading-none">THE <span class="neon-yellow">BIBLE</span> OF TRADING.</h1>
+            <p class="mt-6 text-gray-500 text-lg border-l border-yellow-500 pl-4">Wikipedia level knowledge. Cyberpunk UI. 100% Free.</p>
         </header>
 
-        <section class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <h3 class="text-xl font-bold mb-4">The Bullish Hammer</h3>
-            <p class="mb-6 text-gray-300">A Hammer occurs at the bottom of a downtrend and signals a potential reversal. It has a small body and a long lower wick.</p>
-            
-            <div class="candle-container border border-dashed border-gray-600 w-fit mx-auto">
-                <div class="candle bg-green-500 h-6 text-green-500">
-                    <div class="wick h-16 bottom-0" style="bottom: -40px;"></div>
+        <section id="intro" class="mb-32">
+            <h2 class="neon-yellow text-xl mb-8 tracking-widest uppercase">// 01 Market Basics</h2>
+            <div class="grid gap-6">
+                <div class="neon-border bg-[#0a0a0a] p-8 rounded-lg">
+                    <h3 class="text-white font-bold text-2xl mb-4">Price Action Kya Hai?</h3>
+                    <p class="text-gray-400">Price Action means price ki movement ko dekh kar trade lena. Hum indicators se pehle candles ko dekhte hain because <strong>Price is God (Bhav Bhagwan Che)</strong>. Indicators sirf confirmation ke liye hote hain.</p>
                 </div>
             </div>
-            <p class="text-center text-sm text-gray-500 mt-2 italic">Diagram: A standard Bullish Hammer</p>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div class="p-6 bg-gray-800 rounded-lg">
-                <h4 class="text-green-400 font-bold uppercase text-xs tracking-widest">Bullish Signal</h4>
-                <p class="mt-2 font-semibold">Morning Star</p>
-                <p class="text-sm text-gray-400 mt-1">A three-candle pattern indicating the end of a sell-off.</p>
+        <section id="patterns" class="mb-32 scroll-mt-20">
+            <h2 class="neon-yellow text-xl mb-8 tracking-widest uppercase">// 02 Chart Patterns</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="neon-border bg-[#0a0a0a] p-6 rounded-xl chart-bg">
+                    <h4 class="text-white font-bold mb-2 uppercase">Double Bottom (W Pattern)</h4>
+                    <p class="text-xs text-gray-500 mb-4">Yeh ek bullish pattern hai. Jab price ek hi level se do baar bounce kare, toh hum buy karte hain.</p>
+                    <div class="h-32 flex items-center justify-center border-t border-gray-800 pt-4">
+                        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 10L30 50L50 20L70 50L90 10" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="neon-border bg-[#0a0a0a] p-6 rounded-xl chart-bg">
+                    <h4 class="text-white font-bold mb-2 uppercase">Head & Shoulders</h4>
+                    <p class="text-xs text-gray-500 mb-4">Yeh bearish reversal hai. Jab price teen peaks banaye aur beech wali sabse badi ho.</p>
+                    <div class="h-32 flex items-center justify-center border-t border-gray-800 pt-4">
+                        <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 40L30 20L40 40L50 5L65 40L80 20L95 40" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div class="p-6 bg-gray-800 rounded-lg">
-                <h4 class="text-red-400 font-bold uppercase text-xs tracking-widest">Bearish Signal</h4>
-                <p class="mt-2 font-semibold">Evening Star</p>
-                <p class="text-sm text-gray-400 mt-1">A visual warning that the uptrend is losing steam.</p>
-            </div>
-        </div>
-    </main>
+        </section>
 
+        <section id="indicators" class="mb-32">
+            <h2 class="neon-yellow text-xl mb-8 tracking-widest uppercase">// 03 Indicators</h2>
+            <div class="space-y-8">
+                <div class="neon-border bg-[#0a0a0a] p-10 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-2 underline decoration-yellow-500 underline-offset-8">RSI (Relative Strength Index)</h3>
+                    <p class="mt-6">Kaise kaam karta hai? Simple: RSI 0-100 ke beech ghumta hai.</p>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span> Overbought (70+): Price bohot upar ja chuka hai, sell karne ka time hai.</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span> Oversold (30-): Price sasta mil raha hai, buy karne ka time hai.</li>
+                    </ul>
+                </div>
+                
+                <div class="neon-border bg-[#0a0a0a] p-10 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-white mb-2 underline decoration-yellow-500 underline-offset-8">Support & Resistance</h3>
+                    <p class="mt-6">Market kabhi bhi seedha upar nahi jata. </p>
+                    <div class="bg-black/50 p-4 mt-4 border-l-4 border-yellow-500 italic text-sm">
+                        "Support is the floor, Resistance is the ceiling."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 </body>
 </html>
