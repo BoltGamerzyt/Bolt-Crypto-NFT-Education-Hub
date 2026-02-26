@@ -3,145 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOLT ULTRA | 1000+ LINE TRADING TERMINAL</title>
+    <title>BOLT ACADEMY | THE ULTIMATE TRADING BIBLE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;400;600;700&display=swap');
+        
+        /* THEME CORE */
         html { scroll-behavior: smooth; }
-        body { background-color: #030303; font-family: 'Inter', sans-serif; color: #94a3b8; margin: 0; }
-        .neon-yellow { color: #fbbf24; text-shadow: 0 0 15px rgba(251, 191, 36, 0.4); font-family: 'Orbitron', sans-serif; }
-        .sidebar { width: 300px; height: 100vh; background: #080808; border-right: 1px solid #1a1a1a; position: fixed; overflow-y: auto; z-index: 100; transition: all 0.3s; }
-        .main-content { margin-left: 300px; padding: 4rem; max-width: 1400px; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; transition: 0.3s; }
-        .card:hover { border-color: #fbbf24; background: #0d0d0d; }
-        .nav-link { display: block; padding: 0.75rem 2rem; font-size: 0.7rem; font-weight: 800; color: #475569; text-transform: uppercase; border-left: 3px solid transparent; cursor: pointer; }
-        .nav-link:hover { color: #fbbf24; background: rgba(251, 191, 36, 0.05); border-left-color: #fbbf24; }
-        .detail-pane { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #1e1e1e; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .status-tag { font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
-        .tag-pro { background: #fbbf24; color: #000; }
-        .tag-core { background: #1e293b; color: #fff; }
+        body { background-color: #020202; font-family: 'Inter', sans-serif; color: #cbd5e1; margin: 0; overflow-x: hidden; }
+        
+        /* UI ELEMENTS */
+        .neon-yellow { color: #fbbf24; text-shadow: 0 0 10px #fbbf24; font-family: 'Orbitron', sans-serif; }
+        .neon-border { border: 1px solid rgba(251, 191, 36, 0.15); border-radius: 12px; transition: 0.3s; }
+        .neon-border:hover { border-color: #fbbf24; box-shadow: 0 0 25px rgba(251, 191, 36, 0.1); }
+        
+        /* SIDEBAR DESIGN */
+        .sidebar { width: 280px; height: 100vh; background: #080808; border-right: 1px solid #1a1a1a; position: fixed; overflow-y: auto; z-index: 1000; }
+        .nav-link { display: block; padding: 0.8rem 1.5rem; font-size: 0.7rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; border-left: 3px solid transparent; transition: 0.2s; }
+        .nav-link:hover { color: #fbbf24; border-left-color: #fbbf24; background: rgba(251, 191, 36, 0.05); }
+        
+        /* CONTENT BOXES */
+        .main-content { margin-left: 280px; padding: 4rem; max-width: 1400px; }
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 16px; padding: 2.5rem; margin-bottom: 3rem; }
+        .glossary-item { padding: 1rem; border-bottom: 1px solid #111; }
+        .glossary-item:hover { background: #0d0d0d; }
+
+        /* WIDGET FIXES */
+        .tv-container { height: 600px; width: 100%; border-radius: 12px; overflow: hidden; }
+        
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+        }
+        
+        /* ANIMATION */
+        @keyframes glow { from { opacity: 0.8; } to { opacity: 1; } }
+        .animate-glow { animation: glow 2s infinite alternate; }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <div class="p-8 border-b border-gray-900 sticky top-0 bg-[#080808] z-50">
-            <h1 class="neon-yellow text-2xl tracking-tighter mb-4">BOLT ULTRA</h1>
-            <input type="text" id="masterSearch" placeholder="Search 1000+ Topics..." 
-                   class="w-full bg-[#111] border border-gray-800 text-white text-xs p-3 rounded-lg focus:border-yellow-500 outline-none">
+        <div class="p-8 sticky top-0 bg-[#080808] border-b border-gray-900 z-10">
+            <h1 class="neon-yellow text-2xl tracking-tighter mb-4">BOLT ACADEMY</h1>
+            <input type="text" id="searchInput" placeholder="Search Master Bible..." 
+                   class="w-full bg-[#111] border border-gray-800 text-white text-xs p-3 rounded-lg outline-none focus:border-yellow-500">
         </div>
         
         <nav class="py-6">
             <p class="px-8 text-[10px] text-gray-600 font-black uppercase mb-3">00 // Live Terminal</p>
-            <a onclick="showDetail('terminal-section')" class="nav-link">Advanced Pro Chart</a>
-            <a onclick="showDetail('heatmap-section')" class="nav-link">Market Heatmap</a>
+            <a href="#pro-terminal" class="nav-link">Advanced Multi-Chart</a>
+            <a href="#heatmap" class="nav-link">Global Heatmaps</a>
 
-            <p class="px-8 text-[10px] text-gray-600 font-black uppercase mt-8 mb-3">01 // Smart Money (SMC)</p>
-            <a onclick="showDetail('smc-intro')" class="nav-link">What is Smart Money?</a>
-            <a onclick="showDetail('order-blocks')" class="nav-link">Order Blocks (OB)</a>
-            <a onclick="showDetail('fair-value-gaps')" class="nav-link">Fair Value Gaps (FVG)</a>
-            <a onclick="showDetail('liquidity')" class="nav-link">Liquidity Grabs</a>
+            <p class="px-8 text-[10px] text-gray-600 font-black uppercase mt-8 mb-3">01 // Price Action Bible</p>
+            <a href="#market-structure" class="nav-link">Market Structure (SMC)</a>
+            <a href="#candlestick-encyclopedia" class="nav-link">Candlestick Encyclopedia</a>
+            <a href="#supply-demand" class="nav-link">Supply & Demand Zones</a>
 
-            <p class="px-8 text-[10px] text-gray-600 font-black uppercase mt-8 mb-3">02 // The Candlestick Bible</p>
-            <a onclick="showDetail('hammer-candle')" class="nav-link">The Hammer / Hanging Man</a>
-            <a onclick="showDetail('engulfing')" class="nav-link">Engulfing Patterns</a>
-            <a onclick="showDetail('doji')" class="nav-link">Doji Variants</a>
+            <p class="px-8 text-[10px] text-gray-600 font-black uppercase mt-8 mb-3">02 // The Strategist</p>
+            <a href="#gfs-strategy" class="nav-link">GFS Triple Screen</a>
+            <a href="#wyckoff" class="nav-link">Wyckoff Methodology</a>
+            <a href="#elliott-wave" class="nav-link">Elliott Wave Theory</a>
+            <a href="#fibonacci" class="nav-link">Fibonacci Retracement</a>
 
-            <p class="px-8 text-[10px] text-gray-600 font-black uppercase mt-8 mb-3">03 // Mastery Glossary</p>
-            <a onclick="showDetail('glossary-a')" class="nav-link">Glossary A-M</a>
-            <a onclick="showDetail('glossary-n')" class="nav-link">Glossary N-Z</a>
+            <p class="px-8 text-[10px] text-gray-600 font-black uppercase mt-8 mb-3">03 // Indicators Alpha</p>
+            <a href="#indicators" class="nav-link">RSI, MACD & EMA</a>
+            <a href="#bollinger" class="nav-link">Bollinger Bands</a>
+
+            <p class="px-8 text-[10px] text-gray-600 font-black uppercase mt-8 mb-3">04 // F&O & Management</p>
+            <a href="#options" class="nav-link">Option Greeks</a>
+            <a href="#risk" class="nav-link">Risk Management (1%)</a>
+            <a href="#glossary" class="nav-link">The Master Glossary</a>
         </nav>
     </div>
 
     <main class="main-content">
         
         <header class="mb-32">
-            <h1 class="text-8xl font-black text-white leading-none tracking-tighter uppercase">THE <br><span class="neon-yellow">TRADING</span> <br>BIBLE.</h1>
-            <p class="mt-8 text-gray-500 text-xl border-l-4 border-yellow-500 pl-8 max-w-2xl italic leading-relaxed">
-                A definitive 1,000+ line repository. Click any sidebar topic to inject detailed data.
+            <div class="inline-block px-3 py-1 border border-yellow-500/30 rounded-full text-[10px] text-yellow-500 font-bold mb-6 tracking-widest uppercase animate-glow">
+                Institutional Grade Knowledge Base
+            </div>
+            <h1 class="text-7xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter uppercase mb-10">
+                THE <span class="neon-yellow">TRADING</span> <br>ENCYCLOPEDIA.
+            </h1>
+            <p class="text-gray-500 text-xl border-l-4 border-yellow-600 pl-8 max-w-3xl leading-relaxed italic">
+                A massive 1,000-line master repository for professional technical analysis, market psychology, and live data visualization.
             </p>
         </header>
 
-        <section id="terminal-section" class="card wiki-section hidden">
-            <h2 class="neon-yellow text-xl mb-6">// PRO TRADING TERMINAL</h2>
-            <div class="h-[600px] w-full rounded-xl overflow-hidden bg-black border border-gray-800">
-                <div id="tradingview_bolt_ultra" class="w-full h-full"></div>
+        <section id="pro-terminal" class="mb-40 scroll-mt-20 wiki-section">
+            <h2 class="neon-yellow text-xl mb-10 tracking-[0.4em] uppercase">// ADVANCED MULTI-CHART TERMINAL</h2>
+            <div class="grid grid-cols-1 xl:grid-cols-4 gap-6 mb-8">
+                <div class="xl:col-span-1 card p-0 overflow-hidden h-[600px] border-gray-800">
+                    <div class="tradingview-widget-container h-full">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                        {
+                          "colorTheme": "dark", "dateRange": "12M", "showChart": true, "locale": "en", "width": "100%", "height": "100%", "isTransparent": true,
+                          "tabs": [
+                            { "title": "Indices", "symbols": [{ "s": "FOREXCOM:SPXUSD" }, { "s": "FOREXCOM:NSXUSD" }, { "s": "INDEX:NIFTY" }] },
+                            { "title": "Crypto", "symbols": [{ "s": "BINANCE:BTCUSDT" }, { "s": "BINANCE:ETHUSDT" }] }
+                          ]
+                        }
+                        </script>
+                    </div>
+                </div>
+                <div class="xl:col-span-3 card p-0 overflow-hidden h-[600px] border-gray-800">
+                    <div id="tradingview_bolt_main" class="w-full h-full"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                    new TradingView.widget({
+                      "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "1", "locale": "en",
+                      "toolbar_bg": "#f1f3f6", "enable_publishing": false, "allow_symbol_change": true, "withdateranges": true, "hide_side_toolbar": false, "container_id": "tradingview_bolt_main"
+                    });
+                    </script>
+                </div>
             </div>
         </section>
 
-        <section id="smc-intro" class="card wiki-section hidden">
-            <span class="status-tag tag-pro">Institutional Strategy</span>
-            <h2 class="text-4xl font-bold text-white mt-4 mb-6 italic">Smart Money Concepts (SMC)</h2>
-            <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                SMC is based on tracking the activity of "Whales" (Banks, Institutions). These entities don't buy like retail traders; they leave traces in the form of **Order Blocks** and **Liquidity Sweeps**.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-6 bg-black rounded-lg border border-gray-900">
-                    <h4 class="text-yellow-500 font-bold mb-2">BOS (Break of Structure)</h4>
-                    <p class="text-xs text-gray-500">When the market breaks a significant swing high or low, confirming the continuation of a trend.</p>
-                </div>
-                <div class="p-6 bg-black rounded-lg border border-gray-900">
-                    <h4 class="text-yellow-500 font-bold mb-2">CHoCH (Change of Character)</h4>
-                    <p class="text-xs text-gray-500">The first sign of a trend reversal. Occurs when price breaks the opposite side of the structure.</p>
-                </div>
-            </div>
-            
-        </section>
-
-        <section id="order-blocks" class="card wiki-section hidden">
-            <span class="status-tag tag-pro">Supply & Demand</span>
-            <h2 class="text-4xl font-bold text-white mt-4 mb-6">Order Blocks (OB) Deep-Dive</h2>
-            <p class="text-gray-400 mb-6">An Order Block is a candle where large institutions placed their heavy orders. We wait for price to return to this "Block" before entering.</p>
-            <div class="space-y-4 text-sm">
-                <div class="p-4 bg-green-950/20 border border-green-900 rounded">
-                    <strong>Bullish OB:</strong> The last down-candle before a massive impulsive move up. 
-                </div>
-                <div class="p-4 bg-red-950/20 border border-red-900 rounded">
-                    <strong>Bearish OB:</strong> The last up-candle before a massive impulsive move down.
+        <section id="market-structure" class="mb-40 scroll-mt-20 wiki-section">
+            <h2 class="neon-yellow text-xl mb-10 uppercase tracking-widest">// 01 MARKET STRUCTURE & SMC</h2>
+            <div class="card">
+                <h3 class="text-3xl font-bold text-white mb-6 italic underline decoration-yellow-500 underline-offset-8">Breaking Market Cycles</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">Market Structure is the backbone of Price Action. Professional institutional traders ignore indicators and look for <strong>BOS (Break of Structure)</strong> and <strong>CHoCH (Change of Character)</strong>.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-black/40 p-6 rounded-lg border-l-4 border-green-500">
+                        <h4 class="text-white font-bold mb-2">Uptrend (Bullish)</h4>
+                        <p class="text-sm text-gray-500 italic">Characterized by Higher Highs (HH) and Higher Lows (HL). The trend remains intact as long as HL holds.</p>
+                    </div>
+                    <div class="bg-black/40 p-6 rounded-lg border-l-4 border-red-500">
+                        <h4 class="text-white font-bold mb-2">Downtrend (Bearish)</h4>
+                        <p class="text-sm text-gray-500 italic">Characterized by Lower Highs (LH) and Lower Lows (LL). The trend remains intact as long as LH holds.</p>
+                    </div>
                 </div>
             </div>
-            
         </section>
 
-        <footer class="mt-40 pb-40 text-center opacity-20">
-            <p class="text-[10px] tracking-[2em] font-black">BOLT ULTRA // 1000+ LINE ARCHIVE</p>
+        <section id="wyckoff" class="mb-40 scroll-mt-20 wiki-section">
+            <h2 class="neon-yellow text-xl mb-10 uppercase tracking-widest">// 02 WYCKOFF THEORY</h2>
+            <div class="card bg-[#080808]">
+                <h3 class="text-2xl font-bold text-white mb-6">Tracking Smart Money (Institutions)</h3>
+                <p class="text-gray-400 mb-8 leading-relaxed text-sm">Richard Wyckoff's theory is the study of Supply and Demand and how institutions manipulate price. There are four phases: Accumulation (Buying), Markup (Pumping), Distribution (Selling), and Markdown (Crashing).</p>
+                <div class="space-y-4">
+                    <div class="p-4 border border-gray-900 rounded bg-black"><strong>Spring:</strong> A final trap where price breaks support to trigger stop losses before reversing hard.</div>
+                    <div class="p-4 border border-gray-900 rounded bg-black"><strong>Upthrust (UTAD):</strong> A fake breakout above resistance designed to trap retail buyers before the crash.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="glossary" class="mb-40 scroll-mt-20 wiki-section">
+            <h2 class="neon-yellow text-xl mb-10 uppercase tracking-widest">// THE MASTER GLOSSARY (A-Z)</h2>
+            <div class="card p-0 overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Arbitrage</h4><p class="text-[10px] text-gray-500">Risk-free profit by buying in one market and selling in another.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Bear Trap</h4><p class="text-[10px] text-gray-500">A signal that suggests a rising trend is reversing, but it's a trap.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Dead Cat Bounce</h4><p class="text-[10px] text-gray-500">A temporary recovery after a massive market crash.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Greeks</h4><p class="text-[10px] text-gray-500">Mathematical tools (Delta, Gamma, Theta) to measure option risk.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Hedge</h4><p class="text-[10px] text-gray-500">An investment made to reduce the risk of adverse price movements.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Liquidity</h4><p class="text-[10px] text-gray-500">How quickly an asset can be sold without causing a price move.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Margin Call</h4><p class="text-[10px] text-gray-500">When a broker demands more cash because your position is losing too much.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Open Interest</h4><p class="text-[10px] text-gray-500">Total number of outstanding derivative contracts.</p></div>
+                    <div class="glossary-item"><h4 class="text-yellow-500 font-bold text-xs uppercase mb-1">Scalping</h4><p class="text-[10px] text-gray-500">A style of trading where you take small profits on many trades.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-60 border-t border-gray-900 pt-20 pb-40 text-center">
+            <p class="text-[10px] tracking-[1.5em] text-gray-700 font-black uppercase">BOLT ACADEMY TERMINAL // END OF MASTER ARCHIVE // 2026</p>
         </footer>
 
     </main>
 
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-
     <script>
-        // 1. DETAIL TOGGLE LOGIC
-        function showDetail(id) {
-            // Hide all sections first
-            document.querySelectorAll('.wiki-section').forEach(s => s.classList.add('hidden'));
-            // Show the target section
-            const target = document.getElementById(id);
-            if(target) {
-                target.classList.remove('hidden');
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-            
-            // Re-init chart if terminal is clicked
-            if(id === 'terminal-section') {
-                new TradingView.widget({
-                    "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "theme": "dark", "container_id": "tradingview_bolt_ultra"
-                });
-            }
-        }
-
-        // 2. SEARCH LOGIC
-        document.getElementById('masterSearch').addEventListener('input', function(e) {
-            let val = e.target.value.toLowerCase();
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.style.display = link.innerText.toLowerCase().includes(val) ? "block" : "none";
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            let filter = e.target.value.toLowerCase();
+            let sections = document.querySelectorAll('.wiki-section');
+            sections.forEach(section => {
+                let text = section.innerText.toLowerCase();
+                section.style.display = text.includes(filter) ? "block" : "none";
             });
         });
-
-        // Initialize with Hero View
-        window.onload = () => showDetail('smc-intro');
     </script>
+
 </body>
 </html>
